@@ -7,7 +7,7 @@ import taskmodel from "../model/taskmodel.js";
 const email = req.user.email
 
   try {
-    if (!task || !is_completed) {
+    if (!task || is_completed === undefined) {
       return res.status(400).json({
         msg: "Data is invalid.",
       });

@@ -14,7 +14,7 @@ const HomePage = () => {
   const fetchTasks = async () => {
     setLoading(true);
     try {
-      const res = await axios.get(`${BASE_URL}/gettask`, {
+      const res = await axios.get(`${BASE_URL}/task/gettask`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -39,10 +39,10 @@ const HomePage = () => {
   
   const handleAddTask = async () => {
     if (!newTask.trim()) return;
-
+console.log(token)
     try {
       await axios.post(
-        `${BASE_URL}/addtask`,
+        `${BASE_URL}/task/addtask`,
         {
           task: newTask,
           is_completed: false,
@@ -67,7 +67,7 @@ const HomePage = () => {
 
     try {
       await axios.patch(
-        `${BASE_URL}/tasks/${selectedTask._id}`,
+        `${BASE_URL}/task/taskupdate/${selectedTask._id}`,
         {},
         {
           headers: {
@@ -89,7 +89,7 @@ const HomePage = () => {
 
     try {
       await axios.delete(
-        `${BASE_URL}/deletetask/${selectedTask._id}`,
+        `${BASE_URL}/task/deletetask/${selectedTask._id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
